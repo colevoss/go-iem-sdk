@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"log"
 
-	"github.com/colevoss/go-iem"
+	"github.com/colevoss/go-iem-sdk"
 )
 
 func main() {
