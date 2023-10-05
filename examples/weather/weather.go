@@ -7,7 +7,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/colevoss/go-iem"
+	"github.com/colevoss/go-iem-sdk"
 )
 
 func main() {
