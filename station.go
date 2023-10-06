@@ -3,24 +3,27 @@ package iem
 import (
 	"context"
 	"fmt"
+	"time"
 )
 
 type Station struct {
-	Index       int     `json:"index"`
-	Id          string  `json:"id"`
-	Synop       float64 `json:"synop"`
-	Name        string  `json:"name"`
-	State       string  `json:"state"`
-	Country     string  `json:"country"`
-	Elevation   float64 `json:"elevation"`
-	Network     string  `json:"network"`
-	Online      bool    `json:"online"`
-	Params      string  `json:"params"`
-	County      string  `json:"county"`
-	PlotName    string  `json:"plot_name"`
-	ClimateSite string  `json:"climate_site"`
-	Latitude    float64 `json:"latitude"`
-	Longitude   float64 `json:"longitude"`
+	Index         int       `json:"index"`
+	Id            string    `json:"id"`
+	Synop         float64   `json:"synop"`
+	Name          string    `json:"name"`
+	State         string    `json:"state"`
+	Country       string    `json:"country"`
+	Elevation     float64   `json:"elevation"`
+	Network       string    `json:"network"`
+	Online        bool      `json:"online"`
+	Params        string    `json:"params"`
+	County        string    `json:"county"`
+	PlotName      string    `json:"plot_name"`
+	ClimateSite   string    `json:"climate_site"`
+	Latitude      float64   `json:"latitude"`
+	Longitude     float64   `json:"longitude"`
+	Timezone      string    `json:"tzname"`
+	ArchiveBegins time.Time `json:"archive_begin"`
 }
 
 type IEMStationsJsonResponse struct {
