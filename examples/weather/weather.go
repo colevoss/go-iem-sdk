@@ -23,10 +23,12 @@ func main() {
 	client := iem.NewClientWithOptions()
 
 	now := time.Now()
-	yesterday := now.AddDate(0, 0, -1)
+	yesterday := now.AddDate(0, 0, -2)
 
 	query := iem.NewWeatherDataQuery()
 	query.Stations(*stationId)
+	query.Timezone("America/Chicago")
+	query.ReportType(3)
 
 	query.Data(iem.TempF, iem.TempC, iem.Feel)
 
@@ -38,6 +40,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
 	str, _ := json.MarshalIndent(data, "", "  ")
 	fmt.Println(string(str))
 	fmt.Printf("Weather Records Count: %d\n", len(data))
