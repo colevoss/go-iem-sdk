@@ -76,6 +76,14 @@ func (c *Client) get(ctx context.Context, url string) (io.ReadCloser, error) {
 	return resp.Body, nil
 }
 
+type IEMNotFoundError struct {
+	Detail string `json:"detail"`
+}
+
+func (err IEMNotFoundError) Error() string {
+	return err.Detail
+}
+
 func (c *Client) getJson(ctx context.Context, url string, result interface{}) error {
 	requestUrl := fmt.Sprintf("%s%s", c.baseUrl, url)
 
@@ -97,6 +105,16 @@ func (c *Client) getJson(ctx context.Context, url string, result interface{}) er
 
 	if err != nil {
 		return err
+	}
+
+	if res.StatusCode == 404 {
+		var notFoundError IEMNotFoundError
+
+		if err = json.Unmarshal(body, &notFoundError); err != nil {
+			return err
+		}
+
+		return notFoundError
 	}
 
 	if err = json.Unmarshal(body, result); err != nil {

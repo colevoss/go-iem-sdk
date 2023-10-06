@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"flag"
-	"log"
+	"fmt"
 
 	"github.com/colevoss/go-iem-sdk"
 )
@@ -26,7 +26,7 @@ func main() {
 		return
 	}
 
-	log.Printf("Pass a network or station id to run this example")
+	fmt.Println("Pass a network or station id to run this example")
 }
 
 func getStation(client *iem.Client, stationId string) {
@@ -39,7 +39,7 @@ func getStation(client *iem.Client, stationId string) {
 	}
 
 	str, _ := json.MarshalIndent(station, "", "  ")
-	log.Printf(string(str))
+	fmt.Println(string(str))
 }
 
 func getAllStations(client *iem.Client, networkId string) {
@@ -52,6 +52,6 @@ func getAllStations(client *iem.Client, networkId string) {
 	}
 
 	str, _ := json.MarshalIndent(stations, "", "  ")
-	log.Printf(string(str))
-	log.Printf("Station count for network (%s): %d", networkId, len(stations))
+	fmt.Println(string(str))
+	fmt.Printf("Station count for network (%s): %d", networkId, len(stations))
 }

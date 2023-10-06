@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"encoding/json"
-	"log"
+	"fmt"
 
 	"github.com/colevoss/go-iem-sdk"
 )
@@ -19,6 +19,6 @@ func main() {
 	}
 
 	str, _ := json.MarshalIndent(networks, "", "  ")
-	log.Printf(string(str))
-	log.Printf("Network count: %d", len(networks))
+	fmt.Println(string(str))
+	fmt.Printf("Network count: %d", len(networks))
 }

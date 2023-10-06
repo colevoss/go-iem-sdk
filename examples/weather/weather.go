@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"flag"
-	"log"
+	"fmt"
 	"time"
 
 	"github.com/colevoss/go-iem-sdk"
@@ -15,7 +15,7 @@ func main() {
 	flag.Parse()
 
 	if *stationId == "" {
-		log.Print("Station (s) arg is required")
+		fmt.Println("Station (s) arg is required")
 		return
 	}
 
@@ -39,6 +39,6 @@ func main() {
 		panic(err)
 	}
 	str, _ := json.MarshalIndent(data, "", "  ")
-	log.Printf(string(str))
-	log.Printf("Weather Records Count: %d", len(data))
+	fmt.Println(string(str))
+	fmt.Printf("Weather Records Count: %d\n", len(data))
 }
