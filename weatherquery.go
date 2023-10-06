@@ -269,9 +269,7 @@ func (b *WeatherDataQueryBuilder) Trace(trace WeatherDataQueryTrace) *WeatherDat
 
 // Sets query builder report_type property (defaults to {3, 4})
 func (b *WeatherDataQueryBuilder) ReportType(types ...int) *WeatherDataQueryBuilder {
-	for _, t := range types {
-		b.reportType = append(b.reportType, t)
-	}
+	b.reportType = types
 
 	return b
 }
